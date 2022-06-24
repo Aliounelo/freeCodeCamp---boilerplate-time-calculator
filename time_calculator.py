@@ -66,7 +66,6 @@ def add_time(start, duration,firstDay=""):
         day_ = ""
       
     #-- Printing format 
-    new_time = str(H) +":"+ (str(M) if M > 9 else ("0" + str(M))) + \
-        " " + format + day_ + day
+    new_time = str(H) +":"+ (str(M) if M > 9 else ("0" + str(M))) + " " + format + day_ + day
     return new_time
 
