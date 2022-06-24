@@ -1,4 +1,4 @@
-def add_time(start, duration,day=""):
+def add_time(start, duration,firstDay=""):
 
     #-- hours and minutes 
 
@@ -8,7 +8,10 @@ def add_time(start, duration,day=""):
 
     durationHours, durationMinutes = duration.split(":")
 
-    day = 0
+    days = 0
+
+    weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", 
+                "Friday", "Saturday", "Sunday"]
 
     #-- 24-hours clock format
 
@@ -26,11 +29,10 @@ def add_time(start, duration,day=""):
         M -= 60
 
     if H >= 24 :
-        day += H//24
+        days += H//24
 
     while H >= 24 :
         H -= 24
-
 
     #-- AM and PM conversion -> 12-hour clock format 
     if H > 0 and H < 12 :
@@ -43,8 +45,28 @@ def add_time(start, duration,day=""):
     else :
         format = "AM"
         H += 12
-    
 
-    return format ,hours, minutes, durationHours, durationMinutes,H,M, day
-#    return new_time
-print(add_time("6:30 PM", "205:12"))
+    #-- Number of day passed 
+    if days > 0 :
+        if days == 1 :
+            day = " (next day)"
+        elif days > 1 :
+            day = " (" + str(days) + " days later)"
+    else : 
+        day = ""
+
+    #-- Week days
+    if firstDay : 
+        weeks = days // 7
+        i = weekDays.index(firstDay.lower().capitalize()) + (days - 7 * weeks)
+        if i > 6 :
+            i -= 7
+        day_ = ", " + weekDays[i]
+    else :
+        day_ = ""
+      
+    #-- Printing format 
+    new_time = str(H) +":"+ (str(M) if M > 9 else ("0" + str(M))) + \
+        " " + format + day_ + day
+    return new_time
+
