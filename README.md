@@ -21,6 +21,6 @@ Below are some examples of different cases the function should handle. Pay close
 
 Do not import any Python libraries. Assume that the start times are valid times. The minutes in the duration time will be a whole number less than 60, but the hour can be any whole number.
 
-<h1><b>Development</h1></b>
+<h1><b>Development</b></h1>
 
 Write your code in time_calculator.py. For development, you can use main.py to test your time_calculator() function. Click the "run" button and main.py will run.
